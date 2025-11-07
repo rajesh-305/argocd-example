@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: filmcast-deployment
+  namespace: filmcast-app  # ← Add namespace here
   labels:
     app: filmcast
 spec:
@@ -19,4 +20,3 @@ spec:
         image: dataquaint/filmcast
         ports:
         - containerPort: 80
-
