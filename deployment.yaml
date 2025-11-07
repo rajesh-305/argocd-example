@@ -6,7 +6,7 @@ metadata:
   labels:
     app: filmcast
 spec:
-  replicas: 10
+  replicas: 5
   selector:
     matchLabels:
       app: filmcast
