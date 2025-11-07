@@ -1,0 +1,19 @@
+Install argo cd with the following commands
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+Ensure all the resources are running fine
+kubectl get all -n argocd
+
+Do port fowarding 
+change the argocd service from cluster IP to Load Balancer
+# Get the ArgoCD server service details
+kubectl get svc argocd-server -n argocd
+
+# If the service type is ClusterIP, change it to LoadBalancer temporarily
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+
+# Wait for external IP
+kubectl get svc argocd-server -n argocd -w
+
+http://externalip:80
